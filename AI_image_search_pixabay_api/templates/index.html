@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</head>
+<body>
+    <h1>Search for Images</h1>
+    <form method="post" action="/">
+        <input type="text" name="query" id="query" placeholder="Enter search term" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if images %}
+        <h2>Search Results:</h2>
+        <div id="results">
+            {% for image in images %}
+                <img src="{{ image }}" alt="Image" style="max-width: 200px; margin: 10px;">
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>
